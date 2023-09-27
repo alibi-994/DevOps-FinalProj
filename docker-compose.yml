@@ -1,23 +1,27 @@
-version: '3.8'
+version: "3.8"
 
 services:
 
   sender:
-    image: alibi994/sender:1.3
+    image: alibi994/sender:1.7
     container_name: sender
     networks: 
       - net1
     depends_on:
       - rabbitmq
+    ports:
+      - 9090:9090
+    restart: on-failure
   
   reciever:
-    image: alibi994/reciever:1.3
+    image: alibi994/reciever:1.7
     container_name: reciever
     networks:
       - net1
     depends_on:
       - rabbitmq
       - postgres
+    restart: on-failure
   
   nginx:
     image: nginx:latest
@@ -25,7 +29,7 @@ services:
     networks:
       - net1
     ports:
-      - "80:80"
+      - 8080:8080
     volumes:
       - type: bind
         source: ./nginx/nginx.conf
@@ -33,6 +37,7 @@ services:
     depends_on:
       - sender
       - reciever
+    restart: on-failure
   
   postgres:
     image: postgres:latest
@@ -40,11 +45,12 @@ services:
     networks:
       - net1
     environment:
-      - POSTGRES_PASSWORD: 1234
-      - POSTGRES_USER: alireza
-      - POSTGRES_DB: db1
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=alireza
+      - POSTGRES_DB=template1
     volumes:
       - postgres-vol:/var/lib/postgresql/data
+    restart: always
 
   rabbitmq:
     image: rabbitmq:latest
@@ -52,14 +58,15 @@ services:
     networks:
       - net1
     environment:
-      - RABBITMQ_DEFAULT_USER: alireza
-      - RABBITMQ_DEFAULT_PASS: 1234
+      - RABBITMQ_DEFAULT_USER=alireza
+      - RABBITMQ_DEFAULT_PASS=1234
     ports:
-      - "15672:15672"
+      - 15672:15672
+    restart: always
 
 
 networks:
   net1:
 
 volumes:
-  postgres-vol
+  postgres-vol:

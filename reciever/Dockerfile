@@ -1,4 +1,4 @@
-FROM golang:1.21.1 as builder
+FROM golang:1.21.1-alpine as builder
 
 RUN mkdir app
 
@@ -11,7 +11,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o main
+RUN go build -o main ./
 
 FROM alpine:latest 
 

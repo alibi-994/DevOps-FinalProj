@@ -14,7 +14,7 @@ func main() {
 		user     = "alireza"
 		password = "1234"
 		host     = "postgres"
-		dbName   = "db1"
+		dbName   = "template1"
 		port     = "5432"
 	)
 	connectionString := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbName)
@@ -34,7 +34,7 @@ func main() {
 		Rpassword  = "1234"
 		Rhost      = "rabbitmq"
 		rabbitPort = "5672"
-		queueName  = ""
+		queueName  = "que1"
 	)
 
 	conn := fmt.Sprintf("amqp://%s:%s@%s:%s/", Ruser, Rpassword, Rhost, rabbitPort)

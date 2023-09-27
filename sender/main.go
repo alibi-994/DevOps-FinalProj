@@ -18,7 +18,7 @@ func main() {
 		password   = "1234"
 		host       = "rabbitmq"
 		rabbitPort = "5672"
-		queueName  = ""
+		queueName  = "que1"
 	)
 
 	conn := fmt.Sprintf("amqp://%s:%s@%s:%s/", user, password, host, rabbitPort)
