@@ -14,10 +14,10 @@ func main() {
 
 	// rabbitMQ config
 	var (
-		user       = ""
-		password   = ""
-		host       = ""
-		rabbitPort = ""
+		user       = "alireza"
+		password   = "1234"
+		host       = "rabbitmq"
+		rabbitPort = "5672"
 		queueName  = ""
 	)
 

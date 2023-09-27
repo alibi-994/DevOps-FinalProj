@@ -11,11 +11,11 @@ import (
 func main() {
 	// database config
 	var (
-		user     = ""
-		password = ""
-		host     = ""
-		dbName   = ""
-		port     = ""
+		user     = "alireza"
+		password = "1234"
+		host     = "postgres"
+		dbName   = "db1"
+		port     = "5432"
 	)
 	connectionString := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbName)
 	db, err := dbrepo.NewPostgresDB(connectionString)
@@ -30,10 +30,10 @@ func main() {
 	fmt.Println("database is ready to be used")
 	// rabbitMQ config
 	var (
-		Ruser      = ""
-		Rpassword  = ""
-		Rhost      = ""
-		rabbitPort = ""
+		Ruser      = "alireza"
+		Rpassword  = "1234"
+		Rhost      = "rabbitmq"
+		rabbitPort = "5672"
 		queueName  = ""
 	)
 
