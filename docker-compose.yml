@@ -9,8 +9,6 @@ services:
       - net1
     depends_on:
       - rabbitmq
-    ports:
-      - 9090:9090
     restart: on-failure
   
   reciever:
